@@ -17,8 +17,8 @@ class TaskBarIcon(wx.TaskBarIcon):
         
         self.Bind(wx.EVT_TASKBAR_LEFT_DOWN, self.on_refresh)
         
-        while True:
-            self.set_icon()
+        
+        self.set_icon()
 
 
     def CreatePopupMenu(self):
@@ -32,8 +32,7 @@ class TaskBarIcon(wx.TaskBarIcon):
         path = self.refresh()
         icon = wx.IconFromBitmap(wx.Bitmap(path))
         self.SetIcon(icon, TRAY_TOOLTIP)
-        time.sleep(6)
-
+        
 
     def on_exit(self, event):
         wx.CallAfter(self.Destroy)
@@ -41,12 +40,12 @@ class TaskBarIcon(wx.TaskBarIcon):
     def on_refresh(self, event):
         if self.internet_on() == True:
             TRAY_ICON = 'C:\\Users\\sped\\Desktop\\newFolder\\yes.png'
-            self.set_icon(TRAY_ICON)
+            self.set_icon()
             print 'internet is on'
         else:
             print 'internet is off'
             TRAY_ICON = 'C:\\Users\\sped\\Desktop\\newFolder\\no.png'
-            self.set_icon(TRAY_ICON)
+            self.set_icon()
 
        
     def refresh(self):
